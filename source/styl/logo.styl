@@ -1,0 +1,24 @@
+.logo
+    display: block
+    padding: 10px 0;
+
+    &__image,
+    &__text
+        display: inline-block
+        vertical-align: middle
+
+    $image_size = 25px // size of logo image
+
+    &__image
+        width: $image_size
+        height: $image_size
+        background: url('/i/logo__image.svg') no-repeat top left
+        background-size: $image_size
+        margin-right: 10px
+
+    &__text
+        color: #2b3a42;
+        font-size: 17px
+        font-weight: normal
+        margin: 0 !important
+        /*font-family: 'Marck Script', cursive !important*/

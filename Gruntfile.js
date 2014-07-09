@@ -2,13 +2,15 @@ module.exports = function(grunt){
     grunt.initConfig({
         jade: {
             compile: {
-                files: [{
-                    cwd: 'source',
-                    src: ['**/*.jade', '!partials/**/*.jade'],
-                    dest: 'dest',
-                    expand: true,
-                    ext: '.html'
-                }]
+                files: [
+                    {
+                        cwd: 'source',
+                        src: ['**/*.jade', '!partials/**/*.jade'],
+                        dest: 'dest',
+                        expand: true,
+                        ext: '.html'
+                    }
+                ]
             },
             options: {
                 pretty: true
@@ -16,23 +18,27 @@ module.exports = function(grunt){
         },
         stylus: {
             compile: {
-                files: [{
-                    cwd: 'source/styl',
-                    src: '**/*.styl',
-                    dest: 'source/css',
-                    expand: true,
-                    ext: '.css'
-                }]
+                files: [
+                    {
+                        cwd: 'source/styl',
+                        src: '**/*.styl',
+                        dest: 'source/css',
+                        expand: true,
+                        ext: '.css'
+                    }
+                ]
             }
         },
         imagemin: {
             dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'source/i',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: 'dest/i'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'source/i',
+                        src: ['**/*.{png,jpg,gif}'],
+                        dest: 'dest/i'
+                    }
+                ]
             }
         },
 //        copy: {
@@ -55,9 +61,28 @@ module.exports = function(grunt){
 //        },
         concat: {
             css: {
+                files: [
+                    {
+                        src: 'source/css/*.css',
+                        dest: 'dest/css/app.css'
+                    }
+                ]
+            }
+        },
+        svgmin: {
+            options: {
+                plugins: [
+                    {
+                        removeViewBox: false
+                    }
+                ]
+            },
+            dist: {
                 files: [{
-                    src: 'source/css/*.css',
-                    dest: 'dest/css/app.css'
+                    expand: true,
+                    cwd: 'source/i',
+                    src: ['**/*.svg'],
+                    dest: 'dest/i'
                 }]
             }
         },
@@ -68,10 +93,6 @@ module.exports = function(grunt){
                 },
                 files: ['dest/**/*']
             },
-//            js: {
-//                files: ['source/js/**/*.js'],
-//                tasks: ['copy:js']
-//            },
             css: {
                 files: ['source/css/*.css'],
                 tasks: ['concat']
@@ -87,6 +108,10 @@ module.exports = function(grunt){
             imagemin: {
                 files: ['source/i/**/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
+            },
+            svgmin: {
+                files: ['source/i/**/*.svg'],
+                tasks: ['svgmin']
             }
         },
         connect: {
@@ -105,12 +130,14 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-svgmin');
 
     grunt.registerTask('default', [
         'connect',
         'jade',
         'stylus',
         'imagemin',
+        'svgmin',
         'concat',
         'watch'
     ]);

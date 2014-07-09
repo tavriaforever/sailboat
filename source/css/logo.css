@@ -1,0 +1,4 @@
+.logo{display:block;padding:10px 0;}
+.logo__image,.logo__text{display:inline-block;vertical-align:middle}
+.logo__image{width:25px;height:25px;background:url("/i/logo__image.svg") no-repeat top left;background-size:25px;margin-right:10px}
+.logo__text{color:#2b3a42;font-size:17px;font-weight:normal;margin:0 !important;}

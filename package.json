@@ -10,6 +10,7 @@
     "grunt-contrib-jade": "~0.12.0",
     "grunt-contrib-stylus": "~0.18.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-svgmin": "^0.4.0",
     "nib": "~1.0.1"
   }
 }
