@@ -19,7 +19,7 @@ module.exports = function(grunt){
                 files: [{
                     cwd: 'source/styl',
                     src: '**/*.styl',
-                    dest: 'dest/css',
+                    dest: 'source/css',
                     expand: true,
                     ext: '.css'
                 }]
@@ -35,21 +35,29 @@ module.exports = function(grunt){
                 }]
             }
         },
-        copy: {
+//        copy: {
+//            css: {
+//                files: [{
+//                    cwd: 'source/css',
+//                    src: ['**/*.css'],
+//                    dest: 'dest/css',
+//                    expand: true
+//                }]
+//            },
+//            js: {
+//                files: [{
+//                    cwd: 'source/js',
+//                    src: ['**/*.js'],
+//                    dest: 'dest/js',
+//                    expand: true
+//                }]
+//            }
+//        },
+        concat: {
             css: {
                 files: [{
-                    cwd: 'source/css',
-                    src: ['**/*.css'],
-                    dest: 'dest/css',
-                    expand: true
-                }]
-            },
-            js: {
-                files: [{
-                    cwd: 'source/js',
-                    src: ['**/*.js'],
-                    dest: 'dest/js',
-                    expand: true
+                    src: 'source/css/*.css',
+                    dest: 'dest/css/app.css'
                 }]
             }
         },
@@ -60,13 +68,13 @@ module.exports = function(grunt){
                 },
                 files: ['dest/**/*']
             },
-            js: {
-                files: ['source/js/**/*.js'],
-                tasks: ['copy:js']
-            },
+//            js: {
+//                files: ['source/js/**/*.js'],
+//                tasks: ['copy:js']
+//            },
             css: {
-                files: ['source/css/**/*.css'],
-                tasks: ['copy:css']
+                files: ['source/css/*.css'],
+                tasks: ['concat']
             },
             jade: {
                 files: ['source/**/*.jade', '!partials/**/*.jade'],
@@ -88,22 +96,22 @@ module.exports = function(grunt){
                     base: 'dest'
                 }
             }
-        },
+        }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('default', [
         'connect',
-        'copy',
         'jade',
         'stylus',
         'imagemin',
+        'concat',
         'watch'
     ]);
 };
