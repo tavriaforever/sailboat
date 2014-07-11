@@ -1,0 +1,4 @@
+.section{min-height:100%;box-sizing:border-box;position:relative;}
+.section_view_home{padding-top:160px}
+.section_view_pictures{height:1450px}
+.section_view_sailboat{padding-top:120px;background:url("/i/sailboat.jpg") top left;background-size:cover}

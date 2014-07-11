@@ -41,7 +41,7 @@ module.exports = function(grunt){
                 ]
             }
         },
-//        copy: {
+        copy: {
 //            css: {
 //                files: [{
 //                    cwd: 'source/css',
@@ -50,15 +50,15 @@ module.exports = function(grunt){
 //                    expand: true
 //                }]
 //            },
-//            js: {
-//                files: [{
-//                    cwd: 'source/js',
-//                    src: ['**/*.js'],
-//                    dest: 'dest/js',
-//                    expand: true
-//                }]
-//            }
-//        },
+            js: {
+                files: [{
+                    cwd: 'source/js',
+                    src: ['**/*.js'],
+                    dest: 'dest/js',
+                    expand: true
+                }]
+            }
+        },
         concat: {
             css: {
                 files: [
@@ -89,13 +89,17 @@ module.exports = function(grunt){
         watch: {
             livereload: {
                 options: {
-                    livereload: true
+                    livereload: false
                 },
                 files: ['dest/**/*']
             },
             css: {
                 files: ['source/css/*.css'],
                 tasks: ['concat']
+            },
+            js: {
+                files: ['source/js/**/*.js'],
+                tasks: ['copy:js']
             },
             jade: {
                 files: ['source/**/*.jade', '!partials/**/*.jade'],
@@ -130,12 +134,14 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-svgmin');
 
     grunt.registerTask('default', [
         'connect',
         'jade',
         'stylus',
+        'copy',
         'imagemin',
         'svgmin',
         'concat',
