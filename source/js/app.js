@@ -11,4 +11,12 @@ $(document).ready(function() {
     $('.pictures').galereya({
         slideShowSpeed: 4000
     });
+
+    var allPanels = $('.faq__accordion > dd').hide();
+
+    $('.faq__accordion > dt > a').click(function() {
+        allPanels.slideUp();
+        $(this).parent().next().slideDown();
+        return false;
+    });
 });
