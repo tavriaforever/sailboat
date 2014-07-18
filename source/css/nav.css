@@ -1,4 +1,0 @@
-.nav{margin-top:10px;}
-.nav__link{font-family:'Marck Script',cursive !important;color:#fff;text-decoration:none;font-size:20px}
-.nav__item{line-height:1;display:inline-block;margin-right:50px}
-.nav__item_active,.nav__item .nav__link:hover{border-bottom:2px solid rgba(255,255,255,0.7)}
