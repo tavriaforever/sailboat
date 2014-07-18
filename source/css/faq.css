@@ -1,0 +1,7 @@
+.faq{margin:50px;}
+.faq__accordion{width:800px;margin:0 auto;text-align:center}
+.faq dt,.faq dd{padding:10px;}
+.faq dt a,.faq dd a{display:block;color:#fff;cursor:pointer;}
+.faq dt a:hover,.faq dd a:hover{color:#ffaf00;text-shadow:1px 2px 4px #64480c}
+.faq dt{font-size:20px;border-bottom:3px solid rgba(255,255,255,0.5);margin-bottom:5px}
+.faq dd{margin:0;padding:10px 20px}

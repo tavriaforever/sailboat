@@ -1,0 +1,6 @@
+.sailboat{position:relative;}
+.sailboat__title{margin-bottom:30px}
+.sailboat__details{font-size:18px;}
+.sailboat__details table{border-collapse:collapse;width:700px;margin:0 auto;}
+.sailboat__details table td{border-bottom:2px solid rgba(255,255,255,0.5)}
+.sailboat__equipment{margin-top:20px}

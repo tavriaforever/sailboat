@@ -1,0 +1,5 @@
+.button{transition:all .15s ease-out;font-family:inherit;font-size:100%;line-height:100%;display:inline-block;margin:0;padding:.6em 1em;text-align:center;text-decoration:none;color:#fff;outline:0;}
+.button::-moz-focus-inner{padding:0;border:0}
+.button_theme_normal{background-color:#c5a981}
+.button_theme_border{border:2px solid #fff;}
+.button_theme_border:hover{color:#c5a981;background-color:#fff}
