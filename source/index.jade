@@ -9,6 +9,7 @@ html
         link(rel='stylesheet', href='css/app.css', type='text/css')
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full')
     body(class='page')
         include partials/header
 
@@ -22,7 +23,7 @@ html
         section(id='services' class='section section_view_services')
             include partials/services
         section(id='maps' class='section section_view_maps')
-            //include partials/maps
+            include partials/map
         section(id='faq' class='section section_view_faq')
             include partials/faq
         section(id='contacts' class='section section_view_contacts')
