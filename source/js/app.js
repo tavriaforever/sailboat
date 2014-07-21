@@ -12,11 +12,16 @@ $(document).ready(function() {
         slideShowSpeed: 4000
     });
 
-    var allPanels = $('.faq__accordion > dd').hide();
+    var allPanels = $('dd').hide(),
+        links = $('.faq__accordion a');
 
-    $('.faq__accordion > dt > a').click(function() {
+    links.click(function(e) {
+        if($(e.target).hasClass('active')) return false;
+
         allPanels.slideUp();
-        $(this).parent().next().slideDown();
+        links.removeClass('active');
+        $(this).addClass('active').parent().next().slideDown();
+
         return false;
     });
 });
