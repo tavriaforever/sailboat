@@ -117,28 +117,28 @@ module.exports = function(grunt){
                 files: ['source/i/**/*.svg'],
                 tasks: ['svgmin']
             }
-        },
-        connect: {
-            server: {
-                options: {
-                    port: 3020,
-                    base: 'dest'
-                }
-            }
         }
+//        connect: {
+//            server: {
+//                options: {
+//                    port: 3020,
+//                    base: 'dest'
+//                }
+//            }
+//        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+//    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-svgmin');
 
     grunt.registerTask('default', [
-        'connect',
+//        'connect',
         'jade',
         'stylus',
         'copy',
