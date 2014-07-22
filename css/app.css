@@ -1,50 +1,7 @@
-.button
-{ transition: all .15s ease-out; font-family: inherit; font-size: 100%; line-height: 100%; display: inline-block; margin: 0; padding: .6em 1em; text-align: center; text-decoration: none; color: #fff; outline: 0; }
-
-.button::-moz-focus-inner
-{ padding: 0; border: 0 }
-
-.button_theme_normal
-{ background-color: #c5a981 }
-
-.button_theme_border
-{ border: 2px solid #fff; }
-
-.button_theme_border:hover
-{ color: #c5a981; background-color: #fff }
-
-.contacts
-{ text-align: center; }
-
-.contacts__text
-{ font-size: 25px }
-
-.contacts__phone
-{ color: #fff; text-decoration: none; display: block; font-size: 35px }
-
-.container
-{ width: 1000px; margin: 0 auto }
-
-.faq
-{ margin: 50px; }
-
-.faq__accordion
-{ width: 800px; margin: 0 auto; text-align: center }
-
-.faq dt, .faq dd
-{ padding: 10px; }
-
-.faq dt a, .faq dd a
-{ display: block; color: #fff; cursor: pointer; }
-
-.faq dt a:hover, .faq dd a:hover
-{ color: #ffaf00; text-shadow: 1px 2px 4px #64480c }
-
-.faq dt
-{ font-size: 20px; border-bottom: 3px solid rgba(255, 255, 255, 0.5); margin-bottom: 5px }
-
-.faq dd
-{ margin: 0; padding: 10px 20px }
+.button{transition:all .15s ease-out;font-family:inherit;font-size:100%;line-height:100%;display:inline-block;margin:0;padding:.6em 1em;text-align:center;text-decoration:none;color:#fff;outline:0;}.button::-moz-focus-inner{padding:0;border:0}.button_theme_normal{background-color:#c5a981}.button_theme_border{border:2px solid #fff;}.button_theme_border:hover{color:#c5a981;background-color:#fff}
+.contacts{text-align:center;}.contacts__text{font-size:25px}.contacts__phone{color:#fff;text-decoration:none;display:block;font-size:35px}
+.container{width:1000px;margin:0 auto}
+.faq{margin:50px;}.faq__accordion{width:800px;margin:0 auto;text-align:center}.faq dt,.faq dd{padding:10px;}.faq dt a,.faq dd a{display:block;color:#fff;cursor:pointer;}.faq dt a:hover,.faq dd a:hover,.faq dt a.active,.faq dd a.active{color:#ffaf00;text-shadow:1px 2px 4px #64480c}.faq dt{font-size:20px;border-bottom:3px solid rgba(255,255,255,0.5);margin-bottom:5px}.faq dd{margin:0;padding:10px 20px}
 
 /* Gallery (begin) */
 .galereya
@@ -567,113 +524,12 @@
 .galereya-slider-desc
 { filter: alpha(opacity=90); background: #000; }
 
-.header
-{ z-index: 9999; text-align: center; position: absolute; width: 100%; }
-
-.header__inner
-{ width: 100%; position: fixed; padding-bottom: 10px; background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0))); background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%); }
-
-.home
-{ text-align: center; color: #fff; }
-
-.home__title
-{ margin-bottom: 20px !important; font-size: 28px }
-
-.home__title-name
-{ margin: 20px 0 40px; font-size: 70px; color: #ffaf00; text-shadow: 1px 2px 4px #64480c }
-
-.home__text
-{ font-size: 20px; margin: 0 auto; max-width: 830px }
-
-.home .button
-{ margin-top: 20px }
-
-.logo
-{ border-bottom: 3px solid rgba(255, 255, 255, 0.5); text-decoration: none; display: block; padding: 15px 0; }
-
-.logo__image, .logo__text
-{ display: inline-block; vertical-align: middle }
-
-.logo__image
-{ width: 25px; height: 25px; background: url('../i/logo__image.svg') no-repeat top left; background-size: 25px; margin-right: 10px }
-
-.logo__text
-{ font-family: 'Marck Script', cursive !important; color: #fff; font-size: 30px; font-weight: normal; margin: 0 }
-
-.nav
-{ margin-top: 10px; }
-
-.nav__link
-{ font-family: 'Marck Script', cursive !important; color: #fff; text-decoration: none; font-size: 20px }
-
-.nav__item
-{ line-height: 1; display: inline-block; margin-right: 50px }
-
-.nav__item_active, .nav__item .nav__link:hover
-{ border-bottom: 2px solid rgba(255, 255, 255, 0.7) }
-
-.page
-{ background: url('../i/bg.jpg') top left; background-size: cover; background-attachment: fixed; padding: 0; margin: 0; font: normal 15px 'Lora', helvetica, arial, serif; line-height: 1.7; font-weight: 300; text-shadow: 1px 1px rgba(0, 0, 0, 0.5); color: #fff }
-
-html, body
-{ height: 100% }
-
-h1, h2, h3, h4, h5, h6
-{ line-height: 1; margin: 0 0 .7em 0; font-family: 'Lora', helvetica, arial, serif; font-weight: 700; text-align: center; color: #ffaf00; text-shadow: 1px 2px 4px #64480c }
-
-h2
-{ font-size: 50px }
-
-h3
-{ font-size: 35px }
-
-h4
-{ font-size: 25px }
-
-.sailboat
-{ position: relative; }
-
-.sailboat__title
-{ margin-bottom: 30px }
-
-.sailboat__details
-{ font-size: 18px; }
-
-.sailboat__details table
-{ border-collapse: collapse; width: 700px; margin: 0 auto; }
-
-.sailboat__details table td
-{ border-bottom: 2px solid rgba(255, 255, 255, 0.5) }
-
-.sailboat__equipment
-{ margin-top: 20px }
-
-.section
-{ min-height: 100%; box-sizing: border-box; position: relative; }
-
-.section_view_home
-{ padding-top: 160px }
-
-.section_view_pictures
-{ height: 1450px }
-
-.section_view_sailboat
-{ padding-top: 120px; background: url('../i/sailboat.jpg') top left; background-size: cover }
-
-.section_view_services
-{ padding-top: 120px }
-
-.section_view_faq
-{ padding-top: 90px }
-
-.section_view_contacts
-{ padding-top: 200px }
-
-.services__item
-{ vertical-align: top; display: inline-block; width: 30%; margin-bottom: 20px; text-align: center }
-
-.services__picture
-{ width: 90%; border-radius: 50%; margin-bottom: 10px }
-
-.services__text
-{ font-size: 19px; text-align: center }
+.header{z-index:9999;text-align:center;position:absolute;width:100%;}.header__inner{width:100%;position:fixed;padding-bottom:10px;background:-moz-linear-gradient(top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(0,0,0,0.65)),color-stop(100%,rgba(0,0,0,0)));background:-webkit-linear-gradient(top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);background:-o-linear-gradient(top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);background:-ms-linear-gradient(top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);background:linear-gradient(to bottom,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%);}
+.home{text-align:center;color:#fff;}.home__title{margin-bottom:20px !important;font-size:28px}.home__title-name{margin:20px 0 40px;font-size:70px;color:#ffaf00;text-shadow:1px 2px 4px #64480c}.home__text{font-size:20px;margin:0 auto;max-width:830px}.home .button{margin-top:20px}
+.logo{border-bottom:3px solid rgba(255,255,255,0.5);text-decoration:none;display:block;padding:15px 0;}.logo__image,.logo__text{display:inline-block;vertical-align:middle}.logo__image{width:25px;height:25px;background:url("../i/logo__image.svg") no-repeat top left;background-size:25px;margin-right:10px}.logo__text{font-family:'Marck Script',cursive !important;color:#fff;font-size:30px;font-weight:normal;margin:0}
+.map{margin-bottom:50px;width:100%;height:550px;text-shadow:none;}.map__desc{margin-bottom:10px;font-size:20px;text-align:center}
+.nav{margin-top:10px;}.nav__link{font-family:'Marck Script',cursive !important;color:#fff;text-decoration:none;font-size:20px}.nav__item{line-height:1;display:inline-block;margin-right:50px}.nav__item_active,.nav__item .nav__link:hover{border-bottom:2px solid rgba(255,255,255,0.7)}
+.page{background:url("../i/bg.jpg") top left;background-size:cover;background-attachment:fixed;padding:0;margin:0;font:normal 15px 'Lora',helvetica,arial,serif;line-height:1.7;font-weight:300;text-shadow:1px 1px rgba(0,0,0,0.5);color:#fff}html,body{height:100%}h1,h2,h3,h4,h5,h6{line-height:1;margin:0 0 .7em 0;font-family:'Lora',helvetica,arial,serif;font-weight:700;text-align:center;color:#ffaf00;text-shadow:1px 2px 4px #64480c}h2{font-size:50px}h3{font-size:35px}h4{font-size:25px}
+.sailboat{position:relative;}.sailboat__title{margin-bottom:30px}.sailboat__details{font-size:18px;}.sailboat__details table{border-collapse:collapse;width:700px;margin:0 auto;}.sailboat__details table td{border-bottom:2px solid rgba(255,255,255,0.5)}.sailboat__equipment{margin-top:20px}
+.section{min-height:100%;box-sizing:border-box;position:relative;}.section_view_home{padding-top:160px}.section_view_pictures{height:1450px}.section_view_sailboat{padding-top:120px;background:url("../i/sailboat.jpg") top left;background-size:cover}.section_view_services{padding-top:120px}.section_view_faq{padding-top:90px}.section_view_maps{padding-top:120px}.section_view_contacts{padding-top:200px}
+.services__item{vertical-align:top;display:inline-block;width:30%;margin-bottom:20px;text-align:center}.services__picture{width:90%;border-radius:50%;margin-bottom:10px}.services__text{font-size:19px;text-align:center}

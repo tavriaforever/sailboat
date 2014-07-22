@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Аренда яхты NANULI в Крыму</title>
-    <!--script(src='http://localhost:35729/livereload.js')-->
+    <title>Яхта Nanuli – аренда яхты в Крыму</title>
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Marck+Script&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
+    <link rel="shortcut icon" href="i/favicon.ico" type="text/css">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;load=package.full"></script>
   </head>
   <body class="page">
     <div class="header">
@@ -20,7 +21,7 @@
           <li class="nav__item"><a href="#pictures" class="nav__link nav__link_view_pictures">Фотографии</a></li>
           <li class="nav__item"><a href="#sailboat" class="nav__link nav__link_view_sailboat">Яхта</a></li>
           <li class="nav__item"><a href="#services" class="nav__link nav__link_view_services">Услуги</a></li>
-          <!--<li class="nav__item"><a href="#maps" class="nav__link nav__link_view_maps">Маршруты</a></li>-->
+          <li class="nav__item"><a href="#maps" class="nav__link nav__link_view_maps">Маршруты</a></li>
           <li class="nav__item"><a href="#faq" class="nav__link nav__link_view_faq">Вопросы и ответы</a></li>
           <li class="nav__item"><a href="#contacts" class="nav__link nav__link_view_contacts">Контакты</a></li>
         </ul>
@@ -43,22 +44,9 @@
       </div>
     </section>
     <section id="pictures" class="section section_view_pictures">
-      <div class="pictures">
-          <img src="i/pictures/1-thumb.jpg" alt="Место капитана" title="Место капитана" data-fullsrc="i/pictures/1.jpg">
-          <img src="i/pictures/2-thumb.jpg" alt="Место капитана" title="Комната отдыха" data-fullsrc="i/pictures/2.jpg">
-          <img src="i/pictures/3-thumb.jpg" alt="Место капитана" title="Комната отдыха" data-fullsrc="i/pictures/3.jpg">
-          <img src="i/pictures/4-thumb.jpg" alt="Место капитана" title="Место капитана" data-fullsrc="i/pictures/4.jpg">
-          <img src="i/pictures/5-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/5.jpg">
-          <img src="i/pictures/6-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/6.jpg">
-          <img src="i/pictures/7-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/7.jpg">
-          <img src="i/pictures/8-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/8.jpg">
-          <img src="i/pictures/9-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/9.jpg">
-          <img src="i/pictures/10-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/10.jpg">
-          <img src="i/pictures/11-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/11.jpg">
-          <!--<img src="i/pictures/12-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/12.jpg">-->
-          <img src="i/pictures/13-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/13.jpg">
-          <!--<img src="i/pictures/14-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/14.jpg">-->
-          <img src="i/pictures/15-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх" data-fullsrc="i/pictures/15.jpg">
+      <div class="pictures"><img src="i/pictures/1-thumb.jpg" alt="Штурвал" title="Штурвал" data-fullsrc="i/pictures/1.jpg"><img src="i/pictures/2-thumb.jpg" alt="Кают компания" title="Кают компания" data-fullsrc="i/pictures/2.jpg"><img src="i/pictures/3-thumb.jpg" alt="Кают компания" title="Кают компания" data-fullsrc="i/pictures/3.jpg"><img src="i/pictures/4-thumb.jpg" alt="Штурвал" title="Штурвал" data-fullsrc="i/pictures/4.jpg"><img src="i/pictures/14-thumb.jpg" alt="Палуба" title="Палуба" data-fullsrc="i/pictures/14.jpg"><img src="i/pictures/5-thumb.jpg" alt="Кают компания" title="Кают компания" data-fullsrc="i/pictures/5.jpg"><img src="i/pictures/6-thumb.jpg" alt="Каюты" title="Каюты" data-fullsrc="i/pictures/6.jpg"><img src="i/pictures/7-thumb.jpg" alt="Кают компания" title="Кают компания" data-fullsrc="i/pictures/7.jpg"><img src="i/pictures/8-thumb.jpg" alt="Приборы" title="Приборы" data-fullsrc="i/pictures/8.jpg"><img src="i/pictures/9-thumb.jpg" alt="Приборы" title="Приборы" data-fullsrc="i/pictures/9.jpg"><img src="i/pictures/15-thumb.jpg" alt="Вид с боку" title="Вид с боку" data-fullsrc="i/pictures/15.jpg"><img src="i/pictures/10-thumb.jpg" alt="Палуба" title="Палуба" data-fullsrc="i/pictures/10.jpg"><img src="i/pictures/11-thumb.jpg" alt="Палуба" title="Палуба" data-fullsrc="i/pictures/11.jpg">
+        <!--img(src="i/pictures/12-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх"  data-fullsrc="i/pictures/12.jpg")-->
+        <!--img(src="i/pictures/13-thumb.jpg" alt="Выход с кают наверх" title="Выход с кают наверх"  data-fullsrc="i/pictures/13.jpg")-->
       </div>
     </section>
     <section id="sailboat" class="section section_view_sailboat">
@@ -180,9 +168,16 @@
         </div>
       </div>
     </section>
-    <!--<section id="maps" class="section section_view_maps">-->
-      <!--&lt;!&ndash;include partials/maps&ndash;&gt;-->
-    <!--</section>-->
+    <section id="maps" class="section section_view_maps">
+      <div class="maps">
+        <div class="container">
+          <h2>Маршруты</h2>
+          <h4>«Дикий Крым»</h4>
+          <div class="map__desc">Севастополь – Евпатория – м.Тарханкут – Севастополь (4 дня)</div>
+          <div id="map-1" class="map"></div>
+        </div>
+      </div>
+    </section>
     <section id="faq" class="section section_view_faq">
       <div class="faq">
         <h2 class="faq__title">Вопросы и ответы</h2>
@@ -196,15 +191,15 @@
           <dt><a>Как организуется питание?</a></dt>
           <dd>3-х разовое питание входит в стомость</dd>
           <dt><a>Есть ли на яхте туалет, душ?</a></dt>
-          <dd>На яхте есть гостевой туалет, душ, умывальник</dd>
+          <dd>На яхте есть гостевой туалет, душ, умывальник.</dd>
           <dt><a>Что с мобильной связью, интернетом?</a></dt>
           <dd>На борту есть стандартная связь стандарта GSM на расстоянии от берега до 12 миль (20 км). Телефоны стандарта CDMA работают на удалении до 50 миль, т.е. при любой дальности прогулки. Интернета на яхте нет.</dd>
           <dt><a>Можно ли будет поплавать в море, порыбачить?</a></dt>
           <dd>График движения Вы выбираете сами. Поэтому можно остановиться в любом месте для купания, рыбалки.</dd>
           <dt><a>Что, если яхту не выпускают в море из-за штормовой погоды?</a></dt>
           <dd>В этом случае возможен либо перенос прогулки на другое время, либо возврат предоплаты.</dd>
-          <!--<dt><a>Где происходит посадка и высадка?</a></dt>-->
-          <!--<dd>Посадка на яхту происходит по адресу: ул. Приморская, 6 или любое другое место по договоренности, где есть возможность безопастно пришвартоваться. Сюда же прибывает яхта по истечении времени аренды, если не оговорено заранее другое место высадки.</dd>-->
+          <dt><a>Где происходит посадка и высадка?</a></dt>
+          <dd>Посадка на яхту происходит по адресу: ул. Приморская, 6 или любое другое место по договоренности, где есть возможность безопастно пришвартоваться. Сюда же прибывает яхта по истечении времени аренды, если не оговорено заранее другое место высадки.</dd>
         </dl>
       </div>
     </section>
@@ -212,10 +207,7 @@
       <div class="contacts">
         <h2>Контакты</h2>
         <div class="contacts__text">Остались вопросы?</div>
-        <div class="contacts__text">Звоните, с радостью ответим на них!</div>
-          <a href="tel:+79787057710" class="contacts__phone">+7 (978) 705-77-10</a>
-          <a href="tel:+380973477077" class="contacts__phone">+38 (097) 347-70-77</a>
-          <a href="tel:+380508429571" class="contacts__phone">+38 (050) 842-95-71</a>
+        <div class="contacts__text">Звоните, с радостью ответим на них!</div><a href="tel:+79787057710" class="contacts__phone">+7 (978) 705-77-10</a><a href="tel:+380973477077" class="contacts__phone">+38 (097) 347-70-77</a><a href="tel:+380508429571" class="contacts__phone">+38 (050) 842-95-71</a>
       </div>
     </section>
     <!-- scripts-->
