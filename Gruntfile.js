@@ -21,7 +21,7 @@ module.exports = function(grunt){
                 files: [
                     {
                         cwd: 'source/styl',
-                        src: '**/*.styl',
+                        src: ['**/*.styl'],
                         dest: 'source/css',
                         expand: true,
                         ext: '.css'
@@ -42,24 +42,26 @@ module.exports = function(grunt){
             }
         },
         copy: {
-//            css: {
-//                files: [{
-//                    cwd: 'source/css',
-//                    src: ['**/*.css'],
-//                    dest: 'dest/css',
-//                    expand: true
-//                }]
-//            },
             js: {
                 files: [{
                     cwd: 'source/js',
-                    src: ['**/*.js'],
+                    src: ['app.js'],
                     dest: 'dest/js',
                     expand: true
                 }]
             }
         },
         concat: {
+            js: {
+                files: [{
+                        src: [
+                            'source/js/libs/jQuery-One-Page-Nav/jquery.nav.js',
+                            'source/js/libs/galereya/src/js/jquery.galereya.js',
+                            'source/js/libs/jquery.browser/dist/jquery.browser.js'
+                        ],
+                        dest: 'dest/js/libs.js'
+                }]
+            },
             css: {
                 files: [
                     {
@@ -95,11 +97,11 @@ module.exports = function(grunt){
             },
             css: {
                 files: ['source/css/*.css'],
-                tasks: ['concat']
+                tasks: ['concat:css']
             },
             js: {
-                files: ['source/js/**/*.js'],
-                tasks: ['copy:js']
+                files: ['source/js/app.js', 'source/js/**/*.js'],
+                tasks: ['copy:js', 'concat:js']
             },
             jade: {
                 files: ['source/**/*.jade', '!partials/**/*.jade'],
