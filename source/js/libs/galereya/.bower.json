@@ -1,0 +1,14 @@
+{
+  "name": "galereya",
+  "homepage": "https://github.com/VodkaBears/galereya",
+  "version": "0.9.94",
+  "_release": "0.9.94",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.94",
+    "commit": "97cf3bac2fdd0575f9ede50f605422e501908378"
+  },
+  "_source": "git://github.com/VodkaBears/galereya.git",
+  "_target": "v0.9.94",
+  "_originalSource": "git://github.com/VodkaBears/galereya.git"
+}

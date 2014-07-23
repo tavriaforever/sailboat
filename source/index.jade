@@ -3,10 +3,11 @@ html
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title=Nanuli
+        title Яхта Nanuli – аренда яхты в Крыму
         link(href='http://fonts.googleapis.com/css?family=Lora:400,700&subset=latin,cyrillic', rel='stylesheet', type='text/css')
         link(href='http://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic', rel='stylesheet', type='text/css')
         link(rel='stylesheet', href='css/app.css', type='text/css')
+        link(rel='shortcut icon', href='i/favicon.ico', type='text/css')
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full')
@@ -31,6 +32,14 @@ html
 
         // scripts
         script(src='http://yandex.st/jquery/1.11.0/jquery.min.js')
-        script(src='js/onePageNav.js')
-        script(src='js/galereya.min.js')
+        script(src='js/libs/jQuery-One-Page-Nav/jquery.nav.js')
+        script(src='js/libs/galereya/src/js/jquery.galereya.js')
+        script(src='js/libs/jquery.browser/dist/jquery.browser.js')
         script(src='js/app.js')
+
+        // Yandex.Metrika counter
+        script(type='text/javascript') (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter25648490 = new Ya.Metrika({id:25648490, webvisor:true, clickmap:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
+
+        noscript
+            div
+                img(src='//mc.yandex.ru/watch/25648490' style='position:absolute; left:-9999px;')

@@ -1,0 +1,16 @@
+{
+    "name": "crimea-yacht.ru",
+    "version": "0.0.1",
+    "private": true,
+
+    "dependencies": {
+        "jQuery-One-Page-Nav": "git://github.com/davist11/jQuery-One-Page-Nav.git#v3.0.0",
+        "galereya": "git://github.com/VodkaBears/galereya.git#v0.9.94",
+        "jquery.browser": "git://github.com/gabceb/jquery-browser-plugin.git"
+    },
+    "ignore": [
+        "node_modules",
+        "dest",
+        ".enb/tmp"
+    ]
+}

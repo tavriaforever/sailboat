@@ -30,54 +30,59 @@ $(document).ready(function() {
 
     function initMaps(){
         var map1 = new ymaps.Map('map-1', {
-            center: [44.635301, 33.48156],
+            center: [44.618997, 33.491173],
             zoom: 12,
             controls: ['smallMapDefaultSet']
         }),
 
         myCollection = new ymaps.GeoObjectCollection();
 
-        // 1
+        // 1 стрелецкая бухта
         myCollection.add(new ymaps.Placemark([44.602934, 33.468514], {
-                hintContent: 'Начало маршрута'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Начало маршрута',
+                balloonContentHeader: 'Стрелецкая бухта',
+                balloonContentBody: '<img src="i/maps/1-1.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
-        // 2
+        // 2 выход в море
         myCollection.add(new ymaps.Placemark([44.620836, 33.47023], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Берем курс на Евпаторию',
+                balloonContentHeader: 'Выход в открытое море',
+                balloonContentBody: '<img src="i/maps/1-2.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
-        // 3
+        // 3 северная сторона
         myCollection.add(new ymaps.Placemark([44.652949, 33.521729], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Северная сторона Севастополя',
+                balloonContentHeader: 'Северная сторона Севастополя',
+                balloonContentBody: '<p>Северная сторона привлекает жителей и гостей города, прежде всего, замечательными песчаными пляжами Севастополя - Учкуевки и Любимовки, чуть дальше которых находятся прекрасные пляжи Качи, Андреевки и Орловки.</p><img src="i/maps/1-3.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
 
-        // 4
+        // 4 кача
         myCollection.add(new ymaps.Placemark([44.801022, 33.520012], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Кача',
+                balloonContentHeader: 'Кача',
+                balloonContentBody: '<p>Гостей полуострова на отдых в Каче привлекает красота окружающей природы, необыкновенные виды, сочетание гор и моря, мягкий климат и множество развлечений.</p><img src="i/maps/1-2.jpg">'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
-        // 5
-        myCollection.add(new ymaps.Placemark([44.854772, 33.541298], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+        // 5 николаевка
+        myCollection.add(new ymaps.Placemark([44.970652, 33.555203], {
+                hintContent: 'Николаевка',
+                balloonContentHeader: 'Николаевка',
+                balloonContentBody: '<p>Курортный поселок на юго-западном побережье Крыма, славится невысокими ценами на отдых, чистым морем, широкими песчано-галечными пляжами, развитой курортной инфраструктурой и разнообразием предложений отдыха.</p><img src="i/maps/1-5.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
@@ -85,8 +90,7 @@ $(document).ready(function() {
 
         // 6
         myCollection.add(new ymaps.Placemark([45.065376, 33.548508], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Идем вдоль побережья Черного моря и песчаных пляжей'
             },{
                 preset: 'islands#blueDotIcon'
             })
@@ -94,53 +98,46 @@ $(document).ready(function() {
 
         // 7
         myCollection.add(new ymaps.Placemark([45.1784, 33.36483], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Евпатория',
+                balloonContentHeader: 'Евпатория',
+                balloonContentBody: '<p>Приморский курортный город в Крыму с населением в 120 000 человек. Евпатория расположена в степной северо-западной части Крыма. Город растянулся на 14 километров вдоль мелководного Каламитского залива. Cлаву евпаторийским пляжам создали золотистый, чистый и мягкий песок, пологое дно залива и прозрачная вода.</p><img src="i/maps/1-6.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
         // 8
-        myCollection.add(new ymaps.Placemark([45.137348, 33.282089], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+        myCollection.add(new ymaps.Placemark([45.112193, 33.25119], {
+                hintContent: 'Берем курс на Казантип'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
         // 9
-        myCollection.add(new ymaps.Placemark([45.258716, 32.984772], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+        myCollection.add(new ymaps.Placemark([45.280898, 33.007088], {
+                hintContent: 'Поповка',
+                balloonContentHeader: 'Место проведения фестиваля Казантип',
+                balloonContentBody: '<p>Шум моря, крики чаек, горячее солнце и заводная музыка – это Поповка, Евпатория. Благословенный уголок Крыма, место молодежного и семейного туризма. Вот уже который год принимает Поповка, Крым Казантип – крупнейший фестиваль электронной музыки, который недавно приобрел статус международного.</p><img src="i/maps/1-7.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
         );
 
         // 10
-        myCollection.add(new ymaps.Placemark([45.327536, 32.93705], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
-            },{
-                preset: 'islands#blueDotIcon'
-            })
-        );
+//        myCollection.add(new ymaps.Placemark([45.288047, 32.652092], {
+//                hintContent: 'Берем курс на Евпаторию'
+////                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+//            },{
+//                preset: 'islands#blueDotIcon'
+//            })
+//        );
 
         // 11
-        myCollection.add(new ymaps.Placemark([45.288047, 32.652092], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
-            },{
-                preset: 'islands#blueDotIcon'
-            })
-        );
-
-        // 12
         myCollection.add(new ymaps.Placemark([45.332622, 32.468071], {
-                hintContent: 'Берем курс на Евпаторию'
-//                balloonContent: '<img src="img/maps/by_walk/2.jpg" style="margin: 5px;" />',
+                hintContent: 'Мыс Тарханкут',
+                balloonContentHeader: 'Мыс Тарханкут',
+                balloonContentBody: '<p>Популярное место для дайвинга, виндсерфинга, кайтинга. C апреля по октябрь ярко светит солнце, а вода в июле-августе прогревается до +28C. Вблизи нет рек, поэтому вода кристально чистая. Это позволяет проводить соревнования даже по подводному фотографированию.</p><img src="i/maps/1-8.jpg" >'
             },{
                 preset: 'islands#blueDotIcon'
             })
@@ -151,12 +148,11 @@ $(document).ready(function() {
             [44.620836, 33.47023],
             [44.652949, 33.521729],
             [44.801022, 33.520012],
-            [44.854772, 33.541298],
+            [44.970652, 33.555203],
             [45.065376, 33.548508],
             [45.1784, 33.36483],
-            [45.137348, 33.282089],
-            [45.327536, 32.93705],
-            [45.258716, 32.984772],
+            [45.112193, 33.25119],
+            [45.280898, 33.007088],
             [45.288047, 32.652092],
             [45.332622, 32.468071]
         ], {
