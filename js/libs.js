@@ -1,1 +1,1118 @@
-!function(a,b,c){var d=function(d,e){this.elem=d,this.$elem=a(d),this.options=e,this.metadata=this.$elem.data("plugin-options"),this.$win=a(b),this.sections={},this.didScroll=!1,this.$doc=a(c),this.docHeight=this.$doc.height()};d.prototype={defaults:{navItems:"a",currentClass:"current",changeHash:!1,easing:"swing",filter:"",scrollSpeed:750,scrollThreshold:.5,begin:!1,end:!1,scrollChange:!1},init:function(){return this.config=a.extend({},this.defaults,this.options,this.metadata),this.$nav=this.$elem.find(this.config.navItems),""!==this.config.filter&&(this.$nav=this.$nav.filter(this.config.filter)),this.$nav.on("click.onePageNav",a.proxy(this.handleClick,this)),this.getPositions(),this.bindInterval(),this.$win.on("resize.onePageNav",a.proxy(this.getPositions,this)),this},adjustNav:function(a,b){a.$elem.find("."+a.config.currentClass).removeClass(a.config.currentClass),b.addClass(a.config.currentClass)},bindInterval:function(){var a,b=this;b.$win.on("scroll.onePageNav",function(){b.didScroll=!0}),b.t=setInterval(function(){a=b.$doc.height(),b.didScroll&&(b.didScroll=!1,b.scrollChange()),a!==b.docHeight&&(b.docHeight=a,b.getPositions())},250)},getHash:function(a){return a.attr("href").split("#")[1]},getPositions:function(){var b,c,d,e=this;e.$nav.each(function(){b=e.getHash(a(this)),d=a("#"+b),d.length&&(c=d.offset().top,e.sections[b]=Math.round(c))})},getSection:function(a){var b=null,c=Math.round(this.$win.height()*this.config.scrollThreshold);for(var d in this.sections)this.sections[d]-c<a&&(b=d);return b},handleClick:function(c){var d=this,e=a(c.currentTarget),f=e.parent(),g="#"+d.getHash(e);f.hasClass(d.config.currentClass)||(d.config.begin&&d.config.begin(),d.adjustNav(d,f),d.unbindInterval(),d.scrollTo(g,function(){d.config.changeHash&&(b.location.hash=g),d.bindInterval(),d.config.end&&d.config.end()})),c.preventDefault()},scrollChange:function(){var a,b=this.$win.scrollTop(),c=this.getSection(b);null!==c&&(a=this.$elem.find('a[href$="#'+c+'"]').parent(),a.hasClass(this.config.currentClass)||(this.adjustNav(this,a),this.config.scrollChange&&this.config.scrollChange(a)))},scrollTo:function(b,c){var d=a(b).offset().top;a("html, body").animate({scrollTop:d},this.config.scrollSpeed,this.config.easing,c)},unbindInterval:function(){clearInterval(this.t),this.$win.unbind("scroll.onePageNav")}},d.defaults=d.prototype.defaults,a.fn.onePageNav=function(a){return this.each(function(){new d(this,a).init()})}}(jQuery,window,document),function(a){"use strict";function b(b){var c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v=this,w=a([]),x=a([]),y=a([]),z=a([]),A=[],B=[],C=[],D=[],E=0,F=300,G=300,H=!1,I={spacing:0,wave:!0,waveTimeout:300,modifier:"",slideShowSpeed:1e4,cellFadeInSpeed:200,noCategoryName:"all",disableSliderOnClick:!1,load:function(a){a()},onCellClick:function(){}},J={windowResize:function(){Z()},bodyClick:function(b){0===a(b.target).closest(".galereya-cats").length&&x.removeClass("open")},categoriesListClick:function(b){var c=a(b.target),d=b.target.nodeName;"SPAN"===d&&(c=c.parent()),c.is(":first-child")||Y(c.find("span").text()),x.toggleClass("open")},cellClick:function(a){v.options.disableSliderOnClick||$(parseInt(this.getAttribute("data-visibleIndex"),10)),v.options.onCellClick(a)},sliderNextClick:function(){bb("next")},sliderPrevClick:function(){bb("prev")},sliderCloseClick:function(){_()},sliderPlayClick:function(){u?fb():eb()},bodyKeyDown:function(a){H&&(37===a.which||39===a.which)&&a.preventDefault()},bodyKeyUp:function(a){if(H)switch(a.which){case 27:_();break;case 37:i.click();break;case 39:h.click()}}},K=function(){v.addClass("galereya").addClass(v.options.modifier),R(function(){S(),Z(),T(),v.options.wave&&L()&&X(),gb()})},L=function(){var a=document.createElement("div").style,b="transition"in a||"WebkitTransition"in a||"MozTransition"in a||"msTransition"in a||"OTransition"in a;return b},M=function(a){var b=a.css("transitionDuration")||a.css("webkitTransitionDuration")||a.css("mozTransitionDuration")||a.css("oTransitionDuration")||a.css("msTransitionDuration")||0;return b=1e3*parseFloat(b)},N=function(){F=w.width(),G=w.height(),E=Math.floor((v.width()-10)/(F+v.options.spacing)),1>E&&(E=1),o=E*F+(E-1)*v.options.spacing,p=Math.ceil(e.length/E)*G},O=function(b){var c=a(document.createElement("img")).attr("src",b);return v.append(c),e=e.add(c),c},P=function(a,b){var c=a.addClass("galereya-cell-img").wrap('<div class="galereya-cell" data-index="'+w.length+'"></div>').parent().append('<div class="galereya-cell-desc">                                <div class="galereya-cell-desc-title">'+b.title+'</div>                                <div class="galereya-cell-desc-text">'+b.description+"</div>                            </div>").append('<div class="galereya-cell-overlay" />');return c.click(J.cellClick),w=w.add(c),d.append(c),c},Q=function(b){var c={lowsrc:b.lowsrc||"",fullsrc:b.fullsrc||"",title:b.title||"",description:b.description||"",category:b.category||""};return c.category&&(c.category=c.category.toLowerCase(),-1===a.inArray(c.category,B)&&B.push(c.category)),A.push(c),c},R=function(a){var b;e=v.find("img").each(function(a,c){b={lowsrc:c.getAttribute("src")||"",fullsrc:c.getAttribute("data-fullsrc")||"",title:c.getAttribute("title")||c.getAttribute("alt")||"",description:c.getAttribute("data-desc")||"",category:c.getAttribute("data-category")||""},Q(b)}),v.options.load(function(b){if(b&&b.length)for(var c,d=0,e=b.length;e>d;d++)c=Q(b[d]),O(c.lowsrc);a()})},S=function(){if(B.length>0){x=a('<ul class="galereya-cats" />'),c=a('<div class="galereya-top" />'),v.prepend(c.html(x)),x.append('<li class="galereya-cats-item"><span>'+v.options.noCategoryName+"</span></li>");for(var b=0;b<B.length;b++)x.append('<li class="galereya-cats-item"><span>'+B[b]+"</span></li>")}var m,n,o;e.wrapAll('<div class="galereya-grid" />').each(function(b,c){m=a(c),n=A[b].title,o=A[b].description,m.addClass("galereya-cell-img").wrap('<div class="galereya-cell" data-index="'+b+'"></div>').parent().append('<div class="galereya-cell-desc">                                <div class="galereya-cell-desc-title">'+n+'</div>                                <div class="galereya-cell-desc-text">'+o+"</div>                            </div>").append('<div class="galereya-cell-overlay" />')}),w=v.find(".galereya-cell"),d=v.find(".galereya-grid"),f=a('<div class="galereya-slider" />'),g=a('<div class="galereya-slider-container" />'),h=a('<div class="galereya-slider-nav right" />'),i=a('<div class="galereya-slider-nav left" />'),j=a('<div class="galereya-slider-desc" />'),k=a('<div class="galereya-slider-close" />'),l=a('<div class="galereya-slider-play" />'),f.addClass(v.options.modifier).append(g).append(h).append(i).append(j).append(j).append(k).append(l),a(document.body).append(f),v.show()},T=function(b,c){if(b=b||0,!(b>=e.length)){if(clearTimeout(r),c&&A[b].category!==c)return void setTimeout(function(){T(++b,c)},0);var d=e[b],f=function(){H?a(this).parent().show():a(this).parent().fadeIn(v.options.cellFadeInSpeed,"linear"),r=setTimeout(function(){T(++b,c)},v.options.cellFadeInSpeed/2)};d.complete?f.call(d):a(d).attr("src",d.src).load(f),U(b)}},U=function(b){var c,d=w[b];V(d,C.length),c=C.push(d)-1,a(d).addClass("visible").attr("data-visibleIndex",c)},V=function(a,b){var c,e,f,g;g=b%E,c=g*F+v.options.spacing*g,b>=E?(f=C[b-E],e=f.offsetTop+f.offsetHeight+v.options.spacing):e=0;var h=e+a.offsetHeight;h>p&&(p=h,d.height(p+d[0].offsetTop)),a.style.top=e+"px",a.style.left=c+"px"},W=function(){C=[],p=0,w.stop(!0,!0).fadeOut(200).removeClass("visible")},X=function(b){b=b||0,b>=w.length&&(b=0);var c=a(w[b]);c.addClass("wave"),setTimeout(function(){c.removeClass("wave"),X(++b)},v.options.waveTimeout)},Y=function(a){t=a,x.empty().prepend('<li class="galereya-cats-item"><span>'+a+"</span></li>"),W(),a===v.options.noCategoryName?T(0):(x.append('<li class="galereya-cats-item"><span>'+v.options.noCategoryName+"</span></li>"),T(0,a));for(var b,c=0,d=B.length;d>c;c++)b=B[c],b!==a&&x.append('<li class="galereya-cats-item"><span>'+b+"</span></li>")},Z=function(){N(),0===z.length&&(z=y.find(".galereya-slide-img")),z.css("margin-top",(a(window).height()-z.height())/2),d.width(o),p=0;for(var b=0,c=C.length;c>b;b++)V(C[b],b)},$=function(b){if(H)return void setTimeout(function(){$(b)},50);fb(),g.empty(),s=b;var c=M(f),d=function(){m=a("html").css("overflow"),n=a("body").css("overflow"),q=a(window).scrollTop(),a("html, body").css("overflow","hidden")};f.show(0,function(){f.addClass("opened"),L()?setTimeout(d,c+50):d()}),H=!0,bb(),db()},_=function(){if(H){a("html").css("overflow",m),a("body").css("overflow",n),a(window).scrollTop(q);var b=M(f),c=function(){fb(),D=[],g.empty(),f.hide(),H=!1};f.removeClass("opened"),L()?setTimeout(c,b+50):c()}},ab=function(b){clearInterval(u);var c,d,e=C[b],f=parseInt(e.getAttribute("data-index"),10);return c=a('<div class="galereya-slider-slide" />').html('<div class="galereya-slide-loader"></div>'),d=a('<img class="galereya-slide-img" src="'+A[f].fullsrc+'" alt="'+A[f].title+'" />').load(function(){c.html(d),d.css("margin-top",(a(window).height()-d.height())/2),u&&eb()}),c},bb=function(b){b=b||"next",u&&(fb(),eb());var c,d,e,f=b.toLowerCase(),h=C.length;if("next"===f){if(0===D.length)c=s,f="";else if(c=s+1,c>=h)return;d=D[c],d||(d=ab(c),d.addClass(f),g.append(d),D[c]=d),cb(d,"current"),cb(y,"prev")}else if("prev"===f){if(0!==D.length&&(f=""),c=s-1,0>c)return;d=D[c],d||(d=ab(c),d.addClass(f),g.prepend(d),D[c]=d),cb(d,"current"),cb(y,"next")}s=c,y=d,e=C[s].getAttribute("data-index"),j.empty().html('<div class="galereya-slider-desc-title">'+A[e].title+" </div>"+A[e].description),z=d.find(".galereya-slide-img"),z.css("margin-top",(a(window).height()-z.height())/2),db()},cb=function(a,b){setTimeout(function(){a.removeClass("prev").removeClass("next").removeClass("current").addClass(b)},50)},db=function(){var a=C.length;s>=a-1?(fb(),l.hide(),h.hide()):(l.show(),h.show()),0>=s?i.hide():i.show()},eb=function(){l.addClass("pause"),u=setInterval(function(){h.click()},v.options.slideShowSpeed)},fb=function(){l.removeClass("pause"),clearInterval(u),u=null},gb=function(){a(window).bind("resize",J.windowResize),a(document.body).click(J.bodyClick).keydown(J.bodyKeyDown).keyup(J.bodyKeyUp),x.click(J.categoriesListClick),w.click(J.cellClick),h.click(J.sliderNextClick),i.click(J.sliderPrevClick),k.click(J.sliderCloseClick),l.click(J.sliderPlayClick)};return this.options=a.extend({},I,b),this.openSlider=$,this.closeSlider=_,this.changeCategory=Y,this.startSlideShow=eb,this.stopSlideShow=fb,this.nextSlide=function(){h.click()},this.prevSlide=function(){i.click()},this.loadMore=function(a){if(a&&a.length){for(var b,c,d=0,e=w.length,f=e,g=a.length;g>d;d++,f++)b=Q(a[d]),c=O(b.lowsrc),P(c,b);T(e,t)}},K(),this.length>1&&this.each(function(){a(this).galereya(b)}),this}a.fn.galereya=b}(jQuery),function(a,b){"use strict";var c,d;if(a.uaMatch=function(a){a=a.toLowerCase();var b=/(opr)[\/]([\w.]+)/.exec(a)||/(chrome)[ \/]([\w.]+)/.exec(a)||/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||a.indexOf("trident")>=0&&/(rv)(?::| )([\w.]+)/.exec(a)||a.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||[],c=/(ipad)/.exec(a)||/(iphone)/.exec(a)||/(android)/.exec(a)||/(windows phone)/.exec(a)||/(win)/.exec(a)||/(mac)/.exec(a)||/(linux)/.exec(a)||/(cros)/i.exec(a)||[];return{browser:b[3]||b[1]||"",version:b[2]||"0",platform:c[0]||""}},c=a.uaMatch(b.navigator.userAgent),d={},c.browser&&(d[c.browser]=!0,d.version=c.version,d.versionNumber=parseInt(c.version)),c.platform&&(d[c.platform]=!0),(d.android||d.ipad||d.iphone||d["windows phone"])&&(d.mobile=!0),(d.cros||d.mac||d.linux||d.win)&&(d.desktop=!0),(d.chrome||d.opr||d.safari)&&(d.webkit=!0),d.rv){var e="msie";c.browser=e,d[e]=!0}if(d.opr){var f="opera";c.browser=f,d[f]=!0}if(d.safari&&d.android){var g="android";c.browser=g,d[g]=!0}d.name=c.browser,d.platform=c.platform,a.browser=d}(jQuery,window);
+/*
+ * jQuery One Page Nav Plugin
+ * http://github.com/davist11/jQuery-One-Page-Nav
+ *
+ * Copyright (c) 2010 Trevor Davis (http://trevordavis.net)
+ * Dual licensed under the MIT and GPL licenses.
+ * Uses the same license as jQuery, see:
+ * http://jquery.org/license
+ *
+ * @version 3.0.0
+ *
+ * Example usage:
+ * $('#nav').onePageNav({
+ *   currentClass: 'current',
+ *   changeHash: false,
+ *   scrollSpeed: 750
+ * });
+ */
+
+;(function($, window, document, undefined){
+
+	// our plugin constructor
+	var OnePageNav = function(elem, options){
+		this.elem = elem;
+		this.$elem = $(elem);
+		this.options = options;
+		this.metadata = this.$elem.data('plugin-options');
+		this.$win = $(window);
+		this.sections = {};
+		this.didScroll = false;
+		this.$doc = $(document);
+		this.docHeight = this.$doc.height();
+	};
+
+	// the plugin prototype
+	OnePageNav.prototype = {
+		defaults: {
+			navItems: 'a',
+			currentClass: 'current',
+			changeHash: false,
+			easing: 'swing',
+			filter: '',
+			scrollSpeed: 750,
+			scrollThreshold: 0.5,
+			begin: false,
+			end: false,
+			scrollChange: false
+		},
+
+		init: function() {
+			// Introduce defaults that can be extended either
+			// globally or using an object literal.
+			this.config = $.extend({}, this.defaults, this.options, this.metadata);
+
+			this.$nav = this.$elem.find(this.config.navItems);
+
+			//Filter any links out of the nav
+			if(this.config.filter !== '') {
+				this.$nav = this.$nav.filter(this.config.filter);
+			}
+
+			//Handle clicks on the nav
+			this.$nav.on('click.onePageNav', $.proxy(this.handleClick, this));
+
+			//Get the section positions
+			this.getPositions();
+
+			//Handle scroll changes
+			this.bindInterval();
+
+			//Update the positions on resize too
+			this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
+
+			return this;
+		},
+
+		adjustNav: function(self, $parent) {
+			self.$elem.find('.' + self.config.currentClass).removeClass(self.config.currentClass);
+			$parent.addClass(self.config.currentClass);
+		},
+
+		bindInterval: function() {
+			var self = this;
+			var docHeight;
+
+			self.$win.on('scroll.onePageNav', function() {
+				self.didScroll = true;
+			});
+
+			self.t = setInterval(function() {
+				docHeight = self.$doc.height();
+
+				//If it was scrolled
+				if(self.didScroll) {
+					self.didScroll = false;
+					self.scrollChange();
+				}
+
+				//If the document height changes
+				if(docHeight !== self.docHeight) {
+					self.docHeight = docHeight;
+					self.getPositions();
+				}
+			}, 250);
+		},
+
+		getHash: function($link) {
+			return $link.attr('href').split('#')[1];
+		},
+
+		getPositions: function() {
+			var self = this;
+			var linkHref;
+			var topPos;
+			var $target;
+
+			self.$nav.each(function() {
+				linkHref = self.getHash($(this));
+				$target = $('#' + linkHref);
+
+				if($target.length) {
+					topPos = $target.offset().top;
+					self.sections[linkHref] = Math.round(topPos);
+				}
+			});
+		},
+
+		getSection: function(windowPos) {
+			var returnValue = null;
+			var windowHeight = Math.round(this.$win.height() * this.config.scrollThreshold);
+
+			for(var section in this.sections) {
+				if((this.sections[section] - windowHeight) < windowPos) {
+					returnValue = section;
+				}
+			}
+
+			return returnValue;
+		},
+
+		handleClick: function(e) {
+			var self = this;
+			var $link = $(e.currentTarget);
+			var $parent = $link.parent();
+			var newLoc = '#' + self.getHash($link);
+
+			if(!$parent.hasClass(self.config.currentClass)) {
+				//Start callback
+				if(self.config.begin) {
+					self.config.begin();
+				}
+
+				//Change the highlighted nav item
+				self.adjustNav(self, $parent);
+
+				//Removing the auto-adjust on scroll
+				self.unbindInterval();
+
+				//Scroll to the correct position
+				self.scrollTo(newLoc, function() {
+					//Do we need to change the hash?
+					if(self.config.changeHash) {
+						window.location.hash = newLoc;
+					}
+
+					//Add the auto-adjust on scroll back in
+					self.bindInterval();
+
+					//End callback
+					if(self.config.end) {
+						self.config.end();
+					}
+				});
+			}
+
+			e.preventDefault();
+		},
+
+		scrollChange: function() {
+			var windowTop = this.$win.scrollTop();
+			var position = this.getSection(windowTop);
+			var $parent;
+
+			//If the position is set
+			if(position !== null) {
+				$parent = this.$elem.find('a[href$="#' + position + '"]').parent();
+
+				//If it's not already the current section
+				if(!$parent.hasClass(this.config.currentClass)) {
+					//Change the highlighted nav item
+					this.adjustNav(this, $parent);
+
+					//If there is a scrollChange callback
+					if(this.config.scrollChange) {
+						this.config.scrollChange($parent);
+					}
+				}
+			}
+		},
+
+		scrollTo: function(target, callback) {
+			var offset = $(target).offset().top;
+
+			$('html, body').animate({
+				scrollTop: offset
+			}, this.config.scrollSpeed, this.config.easing, callback);
+		},
+
+		unbindInterval: function() {
+			clearInterval(this.t);
+			this.$win.unbind('scroll.onePageNav');
+		}
+	};
+
+	OnePageNav.defaults = OnePageNav.prototype.defaults;
+
+	$.fn.onePageNav = function(options) {
+		return this.each(function() {
+			new OnePageNav(this, options).init();
+		});
+	};
+
+})( jQuery, window , document );
+/*!
+ * Galereya v0.9.94
+ * http://vodkabears.github.com/galereya
+ *
+ * Licensed under the MIT license
+ * Copyright (c) 2013, VodkaBears
+ */
+(function ($) {
+    'use strict';
+
+    function Galereya(options) {
+        var self = this;
+
+        /**
+         * JQuery variables
+         */
+        var $top,
+            $grid,
+            $imgs,
+            $cells = $([]),
+            $categoriesList = $([]),
+            $slider, $sliderContainer,
+            $sliderNext, $sliderPrev, $sliderDesc, $sliderClose, $sliderPlay,
+            $currentSlide = $([]), $currentImg = $([]);
+
+        /**
+         * Variables
+         */
+        var data = [],
+            categories = [],
+            visibleCells = [],
+            slides = [],
+            htmlOverflow, bodyOverflow,
+            gridW,
+            gridH,
+            colCount = 0,
+            cellW = 300,
+            cellH = 300,
+            scrollTop,
+            loadTimeout,
+            currentSlideIndex,
+            currentCategory,
+            isSliderOpened = false,
+            slideShowInterval;
+
+        /**
+         * Default options
+         * @type {Object}
+         */
+        var defaults = {
+            spacing: 0,
+            wave: true,
+            waveTimeout: 300,
+            modifier: '',
+            slideShowSpeed: 10000,
+            cellFadeInSpeed: 200,
+            noCategoryName: 'all',
+            disableSliderOnClick: false,
+            load: function (next) {
+                next();
+            },
+            onCellClick: function (e) {}
+        };
+
+        /**
+         * Event handlers
+         * @type {Object}
+         */
+        var Handlers = {
+            windowResize: function () {
+                resize();
+            },
+            bodyClick: function (e) {
+                if ($(e.target).closest('.galereya-cats').length === 0) {
+                    $categoriesList.removeClass('open');
+                }
+            },
+            categoriesListClick: function (e) {
+                var $target = $(e.target),
+                    nodeName = e.target.nodeName;
+
+                if (nodeName === 'SPAN') {
+                    $target = $target.parent();
+                }
+
+                if (!$target.is(':first-child')) {
+                    changeCategory($target.find('span').text());
+                }
+
+                $categoriesList.toggleClass('open');
+            },
+            cellClick: function (e) {
+                if (!self.options.disableSliderOnClick) {
+                    openSlider(parseInt(this.getAttribute('data-visibleIndex'), 10));
+                }
+
+                self.options.onCellClick(e);
+            },
+            sliderNextClick: function (e) {
+                changeSlide('next');
+            },
+            sliderPrevClick: function (e) {
+                changeSlide('prev');
+            },
+            sliderCloseClick: function () {
+                closeSlider();
+            },
+            sliderPlayClick: function () {
+                if (!slideShowInterval) {
+                    startSlideShow();
+                } else {
+                    stopSlideShow();
+                }
+            },
+            bodyKeyDown: function (e) {
+                if (isSliderOpened) {
+                    if (e.which === 37 || e.which === 39) {
+                        e.preventDefault();
+                    }
+                }
+            },
+            bodyKeyUp: function (e) {
+                if (isSliderOpened) {
+                    switch (e.which) {
+                        case 27:
+                            closeSlider();
+                            break;
+                        case 37:
+                            $sliderPrev.click();
+                            break;
+                        case 39:
+                            $sliderNext.click();
+                            break;
+                        default:
+                    }
+                }
+            }
+        };
+
+        /**
+         * Local constructor
+         */
+        var constructor = function () {
+            self.addClass('galereya').addClass(self.options.modifier);
+            loadData(function () {
+                buildDOM();
+                resize();
+                loadImages();
+                if (self.options.wave && checkTransitionsSupport()) {
+                    wave();
+                }
+                addEventListeners();
+            });
+        };
+
+        /**
+         * Checks css transitions support
+         * @return {Boolean}
+         */
+        var checkTransitionsSupport = function () {
+            var s = document.createElement('div').style,
+                supportsTransitions = 'transition' in s ||
+                    'WebkitTransition' in s ||
+                    'MozTransition' in s ||
+                    'msTransition' in s ||
+                    'OTransition' in s;
+
+            return supportsTransitions;
+        };
+
+        /**
+         * Get transition duration in ms
+         * @return {Boolean}
+         */
+        var getTransitionDuration = function ($elem) {
+            var td = $elem.css('transitionDuration') ||
+                $elem.css('webkitTransitionDuration') ||
+                $elem.css('mozTransitionDuration') ||
+                $elem.css('oTransitionDuration') ||
+                $elem.css('msTransitionDuration') ||
+                0;
+            td = parseFloat(td) * 1000;
+
+            return td;
+        };
+
+        /**
+         * Calculate some starting params
+         */
+        var calcParams = function () {
+            cellW = $cells.width();
+            cellH = $cells.height();
+
+            colCount = Math.floor((self.width() - 10) / (cellW + self.options.spacing));
+            if (colCount < 1) {
+                colCount = 1;
+            }
+
+            gridW = colCount * cellW + (colCount - 1) * self.options.spacing;
+            gridH = Math.ceil($imgs.length / colCount) * cellH;
+        };
+
+        /**
+         * Create a simple grid image DOM element and add it to the $imgs jquery object
+         * @param src
+         * @returns {jQuery} - image element
+         */
+        var createImage = function (src) {
+            var $img = $(document.createElement('img')).attr('src', src);
+            self.append($img);
+            $imgs = $imgs.add($img);
+
+            return $img;
+        };
+
+        /**
+         * Create a galereya cell element and add it to the $cells jquery object
+         * @param $img - an image element
+         * @param item - an image info with a title and description
+         * @returns {jQuery} - cell element
+         */
+        var createCell = function ($img, info) {
+            var $cell = $img.addClass('galereya-cell-img')
+                .wrap('<div class="galereya-cell" data-index="' + $cells.length + '"></div>')
+                .parent()
+                .append('<div class="galereya-cell-desc">\
+                                <div class="galereya-cell-desc-title">' + info.title + '</div>\
+                                <div class="galereya-cell-desc-text">' + info.description + '</div>\
+                            </div>')
+                .append('<div class="galereya-cell-overlay" />');
+            $cell.click(Handlers.cellClick);
+            $cells = $cells.add($cell);
+            $grid.append($cell);
+
+            return $cell;
+        };
+
+        /**
+         * Add information about an image to the data array
+         * @param info
+         * @returns {} - Modified item
+         */
+        var addInfo = function (info) {
+            var item = {
+                "lowsrc": info.lowsrc || '',
+                "fullsrc": info.fullsrc || '',
+                "title": info.title || '',
+                "description": info.description || '',
+                "category": info.category || ''
+            };
+
+            if (item.category) {
+                item.category = item.category.toLowerCase();
+                if ($.inArray(item.category, categories) === -1) {
+                    categories.push(item.category);
+                }
+            }
+
+            data.push(item);
+            return item;
+        };
+
+        /**
+         * Loading data
+         */
+        var loadData = function (next) {
+            var item;
+            $imgs = self.find('img').each(function (i, img) {
+                item = {
+                    "lowsrc": img.getAttribute('src') || '',
+                    "fullsrc": img.getAttribute('data-fullsrc') || '',
+                    "title": img.getAttribute('title') || img.getAttribute('alt') || '',
+                    "description": img.getAttribute('data-desc') || '',
+                    "category": img.getAttribute('data-category') || ''
+                };
+
+                addInfo(item);
+            });
+
+            self.options.load(function (items) {
+                if (items && items.length) {
+                    for (var i = 0, len = items.length, item, $img; i < len; i++) {
+                        item = addInfo(items[i]);
+                        createImage(item.lowsrc);
+                    }
+                }
+
+                next();
+            });
+        };
+
+        /**
+         * Building DOM
+         */
+        var buildDOM = function () {
+            if (categories.length > 0) {
+                $categoriesList = $('<ul class="galereya-cats" />');
+                $top = $('<div class="galereya-top" />');
+                self.prepend($top.html($categoriesList));
+                $categoriesList.append('<li class="galereya-cats-item"><span>' + self.options.noCategoryName + '</span></li>');
+                for (var i = 0; i < categories.length; i++) {
+                    $categoriesList.append('<li class="galereya-cats-item"><span>' + categories[i] + '</span></li>');
+                }
+            }
+
+            var $img, title, desc;
+            $imgs.wrapAll('<div class="galereya-grid" />').each(function (i, img) {
+                $img = $(img);
+                title = data[i].title;
+                desc = data[i].description;
+                $img.addClass('galereya-cell-img')
+                    .wrap('<div class="galereya-cell" data-index="' + i + '"></div>')
+                    .parent()
+                    .append('<div class="galereya-cell-desc">\
+                                <div class="galereya-cell-desc-title">' + title + '</div>\
+                                <div class="galereya-cell-desc-text">' + desc + '</div>\
+                            </div>')
+                    .append('<div class="galereya-cell-overlay" />');
+            });
+
+            $cells = self.find('.galereya-cell');
+            $grid = self.find('.galereya-grid');
+
+            $slider = $('<div class="galereya-slider" />');
+            $sliderContainer = $('<div class="galereya-slider-container" />');
+            $sliderNext = $('<div class="galereya-slider-nav right" />');
+            $sliderPrev = $('<div class="galereya-slider-nav left" />');
+            $sliderDesc = $('<div class="galereya-slider-desc" />');
+            $sliderClose = $('<div class="galereya-slider-close" />');
+            $sliderPlay = $('<div class="galereya-slider-play" />');
+            $slider
+                .addClass(self.options.modifier)
+                .append($sliderContainer)
+                .append($sliderNext)
+                .append($sliderPrev)
+                .append($sliderDesc)
+                .append($sliderDesc)
+                .append($sliderClose)
+                .append($sliderPlay);
+            $(document.body).append($slider);
+
+            self.show();
+        };
+
+        /**
+         * Loading images. If image is already loaded, just show it.
+         * @param index - starting index of an image
+         * @param category - category of images
+         */
+        var loadImages = function (index, category) {
+            index = index || 0;
+
+            if (index >= $imgs.length) {
+                return;
+            }
+
+            clearTimeout(loadTimeout);
+
+            if (category && data[index].category !== category) {
+                setTimeout(function () {
+                    loadImages(++index, category);
+                }, 0);
+                return;
+            }
+
+            var img = $imgs[index],
+                onload = function () {
+                    if (isSliderOpened) {
+                        $(this).parent().show();
+                    } else {
+                        $(this).parent().fadeIn(self.options.cellFadeInSpeed, 'linear');
+                    }
+                    loadTimeout = setTimeout(function () {
+                        loadImages(++index, category);
+                    }, self.options.cellFadeInSpeed / 2);
+                };
+
+            if (!img.complete) {
+                $(img).attr("src", img.src).load(onload);
+            } else {
+                onload.call(img);
+            }
+            showCell(index);
+        };
+
+        /**
+         * Show cell of an image
+         * @param index - index of an image.
+         */
+        var showCell = function (index) {
+            var cell = $cells[index],
+                currentIndex;
+
+            placeCell(cell, visibleCells.length);
+            currentIndex = visibleCells.push(cell) - 1;
+
+            $(cell).addClass('visible').attr('data-visibleIndex', currentIndex);
+        };
+
+        /**
+         * Place the cell into the grid of a visible cells
+         * @param cell
+         * @param number
+         */
+        var placeCell = function (cell, number) {
+            var left, top, topCell, col;
+
+            col = number % colCount;
+            left = col * cellW + self.options.spacing * col;
+            if (number >= colCount) {
+                topCell = visibleCells[number - colCount];
+                top = topCell.offsetTop + topCell.offsetHeight + self.options.spacing;
+            } else {
+                top = 0;
+            }
+
+            // Change height cell by cell
+            var height = top + cell.offsetHeight;
+            if (height > gridH) {
+                gridH = height;
+                $grid.height(gridH + $grid[0].offsetTop);
+            }
+
+            cell.style.top = top + 'px';
+            cell.style.left = left + 'px';
+        };
+
+        /**
+         * Clear the grid
+         */
+        var hideCells = function () {
+            visibleCells = [];
+            gridH = 0;
+            $cells.stop(true, true).fadeOut(200).removeClass('visible');
+        };
+
+        /**
+         * Wave pulsation
+         * @param index - index of a cell
+         */
+        var wave = function (index) {
+            index = index || 0;
+            if (index >= $cells.length) {
+                index = 0;
+            }
+
+            var $cell = $($cells[index]);
+            $cell.addClass('wave');
+
+            setTimeout(function () {
+                $cell.removeClass('wave');
+                wave(++index);
+            }, self.options.waveTimeout);
+        };
+
+        /**
+         * Change current category of images
+         * @param category
+         */
+        var changeCategory = function (category) {
+            currentCategory = category;
+            $categoriesList.empty().prepend('<li class="galereya-cats-item"><span>' + category + '</span></li>');
+
+            hideCells();
+            if (category === self.options.noCategoryName) {
+                loadImages(0);
+            } else {
+                $categoriesList.append('<li class="galereya-cats-item"><span>' + self.options.noCategoryName + '</span></li>');
+                loadImages(0, category);
+            }
+
+            for (var i = 0, len = categories.length, cat; i < len; i++) {
+                cat = categories[i];
+                if (cat !== category) {
+                    $categoriesList.append('<li class="galereya-cats-item"><span>' + cat + '</span></li>');
+                }
+            }
+        };
+
+        /**
+         * Gallery resizing
+         */
+        var resize = function () {
+            calcParams();
+
+            if ($currentImg.length === 0) {
+                $currentImg = $currentSlide.find('.galereya-slide-img');
+            }
+            $currentImg.css('margin-top', ($(window).height() - $currentImg.height()) / 2);
+            $grid.width(gridW);
+            gridH = 0;
+            for (var i = 0, len = visibleCells.length; i < len; i++) {
+                placeCell(visibleCells[i], i);
+            }
+        };
+
+        /**
+         * Show slider
+         * @param visibleIndex
+         */
+        var openSlider = function (visibleIndex) {
+            if (isSliderOpened) {
+                setTimeout(function () {
+                    openSlider(visibleIndex);
+                }, 50);
+                return;
+            }
+
+            stopSlideShow();
+            $sliderContainer.empty();
+            currentSlideIndex = visibleIndex;
+
+            var td = getTransitionDuration($slider),
+                next = function () {
+                    htmlOverflow = $('html').css('overflow');
+                    bodyOverflow = $('body').css('overflow');
+                    scrollTop = $(window).scrollTop();
+                    $('html, body').css('overflow', 'hidden');
+                };
+
+            $slider.show(0, function () {
+                $slider.addClass('opened');
+                if (checkTransitionsSupport()) {
+                    setTimeout(next, td + 50);
+                } else {
+                    next();
+                }
+            });
+
+            isSliderOpened = true;
+            changeSlide();
+            updateNavigation();
+        };
+
+        /**
+         * Close slider
+         */
+        var closeSlider = function () {
+            if (!isSliderOpened) {
+                return;
+            }
+
+            $('html').css('overflow', htmlOverflow);
+            $('body').css('overflow', bodyOverflow);
+            $(window).scrollTop(scrollTop);
+
+            var td = getTransitionDuration($slider),
+                next = function () {
+                    stopSlideShow();
+                    slides = [];
+                    $sliderContainer.empty();
+                    $slider.hide();
+                    isSliderOpened = false;
+                };
+
+            $slider.removeClass('opened');
+            if (checkTransitionsSupport()) {
+                setTimeout(next, td + 50);
+            } else {
+                next();
+            }
+        };
+
+        /**
+         * Create slide
+         * @param visibleIndex
+         */
+        var createSlide = function (visibleIndex) {
+            clearInterval(slideShowInterval); //freeze slide show
+
+            var cell = visibleCells[visibleIndex],
+                index = parseInt(cell.getAttribute('data-index'), 10),
+                $slide,
+                $img;
+
+            $slide = $('<div class="galereya-slider-slide" />')
+                .html('<div class="galereya-slide-loader"></div>');
+
+            $img = $('<img class="galereya-slide-img" src="' + data[index].fullsrc + '" alt="' + data[index].title + '" />').load(function () {
+                $slide.html($img);
+                $img.css('margin-top', ($(window).height() - $img.height()) / 2);
+                if (slideShowInterval) {
+                    startSlideShow(); //resume slide show when an image is loaded
+                }
+            });
+
+            return $slide;
+        };
+
+        /**
+         * Go to slide
+         * @param direction
+         */
+        var changeSlide = function (direction) {
+            direction = direction || 'next';
+
+            //restore slide show interval, if slide show currently works.
+            //Make it works correctly, when someone clicked next or prev button.
+            if (slideShowInterval) {
+                stopSlideShow();
+                startSlideShow();
+            }
+
+            var nextSlideIndex,
+                dir = direction.toLowerCase(),
+                $slide,
+                index,
+                slidesCount = visibleCells.length;
+
+            if (dir === 'next') {
+
+                if (slides.length === 0) {
+                    nextSlideIndex = currentSlideIndex;
+                    dir = '';
+                } else {
+                    nextSlideIndex = currentSlideIndex + 1;
+                    if (nextSlideIndex >= slidesCount) {
+                        return;
+                    }
+                }
+
+                $slide = slides[nextSlideIndex];
+                if (!$slide) {
+                    $slide = createSlide(nextSlideIndex);
+                    $slide.addClass(dir);
+                    $sliderContainer.append($slide);
+                    slides[nextSlideIndex] = $slide;
+                }
+                changeSlideState($slide, 'current');
+                changeSlideState($currentSlide, 'prev');
+
+            } else if (dir === 'prev') {
+
+                if (slides.length !== 0) {
+                    dir = '';
+                }
+                nextSlideIndex = currentSlideIndex - 1;
+                if (nextSlideIndex < 0) {
+                    return;
+                }
+
+                $slide = slides[nextSlideIndex];
+                if (!$slide) {
+                    $slide = createSlide(nextSlideIndex);
+                    $slide.addClass(dir);
+                    $sliderContainer.prepend($slide);
+                    slides[nextSlideIndex] = $slide;
+                }
+                changeSlideState($slide, 'current');
+                changeSlideState($currentSlide, 'next');
+
+            }
+
+            currentSlideIndex = nextSlideIndex;
+            $currentSlide = $slide;
+            index = visibleCells[currentSlideIndex].getAttribute('data-index');
+            $sliderDesc.empty().html('<div class="galereya-slider-desc-title">' + data[index].title + ' </div>' + data[index].description);
+            $currentImg = $slide.find('.galereya-slide-img');
+            $currentImg.css('margin-top', ($(window).height() - $currentImg.height()) / 2);
+
+            updateNavigation();
+        };
+
+        /**
+         * Change state of a slide
+         * @param $slide
+         * @param direction
+         */
+        var changeSlideState = function ($slide, direction) {
+            setTimeout(function () {
+                $slide
+                    .removeClass('prev')
+                    .removeClass('next')
+                    .removeClass('current')
+                    .addClass(direction);
+            }, 50);
+        };
+
+        /**
+         * Update navigation
+         */
+        var updateNavigation = function () {
+            var len = visibleCells.length;
+
+            if (currentSlideIndex >= len - 1) {
+                stopSlideShow();
+                $sliderPlay.hide();
+                $sliderNext.hide();
+            } else {
+                $sliderPlay.show();
+                $sliderNext.show();
+            }
+
+            if (currentSlideIndex <= 0) {
+                $sliderPrev.hide();
+            } else {
+                $sliderPrev.show();
+            }
+        };
+
+        /**
+         * Start slide show
+         */
+        var startSlideShow = function () {
+            $sliderPlay.addClass('pause');
+            slideShowInterval = setInterval(function () {
+                $sliderNext.click();
+            }, self.options.slideShowSpeed);
+        };
+
+        /**
+         * Stop slide show
+         */
+        var stopSlideShow = function () {
+            $sliderPlay.removeClass('pause');
+            clearInterval(slideShowInterval);
+            slideShowInterval = null;
+        };
+
+        /**
+         * Add event listeners
+         */
+        var addEventListeners = function () {
+            $(window).bind('resize', Handlers.windowResize);
+            $(document.body).click(Handlers.bodyClick)
+                .keydown(Handlers.bodyKeyDown)
+                .keyup(Handlers.bodyKeyUp);
+            $categoriesList.click(Handlers.categoriesListClick);
+            $cells.click(Handlers.cellClick);
+            $sliderNext.click(Handlers.sliderNextClick);
+            $sliderPrev.click(Handlers.sliderPrevClick);
+            $sliderClose.click(Handlers.sliderCloseClick);
+            $sliderPlay.click(Handlers.sliderPlayClick);
+        };
+
+        /**
+         * Public
+         */
+        this.options = $.extend({}, defaults, options);
+        this.openSlider = openSlider;
+        this.closeSlider = closeSlider;
+        this.changeCategory = changeCategory;
+        this.startSlideShow = startSlideShow;
+        this.stopSlideShow = stopSlideShow;
+        this.nextSlide = function () {
+            $sliderNext.click();
+        };
+        this.prevSlide = function () {
+            $sliderPrev.click();
+        };
+        /**
+         * Load additional images to the galereya.
+         * @param items - is an object like in the load function.
+         */
+        this.loadMore = function (items) {
+            if (items && items.length) {
+                var i = 0,
+                    startIndex = $cells.length,
+                    gridIndex = startIndex,
+                    len = items.length,
+                    item, $img;
+                for (; i < len; i++, gridIndex++) {
+                    item = addInfo(items[i]);
+                    $img = createImage(item.lowsrc);
+                    createCell($img, item);
+                }
+
+                loadImages(startIndex, currentCategory);
+            }
+        };
+
+        constructor();
+        if (this.length > 1) {
+            this.each(function () {
+                $(this).galereya(options);
+            });
+        }
+        return this;
+    }
+
+    $.fn.galereya = Galereya;
+}(jQuery));
+
+/*!
+ * jQuery Browser Plugin v0.0.6
+ * https://github.com/gabceb/jquery-browser-plugin
+ *
+ * Original jquery-browser code Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors
+ * http://jquery.org/license
+ *
+ * Modifications Copyright 2013 Gabriel Cebrian
+ * https://github.com/gabceb
+ *
+ * Released under the MIT license
+ *
+ * Date: 2013-07-29T17:23:27-07:00
+ */
+
+(function( jQuery, window, undefined ) {
+  "use strict";
+
+  var matched, browser;
+
+  jQuery.uaMatch = function( ua ) {
+    ua = ua.toLowerCase();
+
+  	var match = /(opr)[\/]([\w.]+)/.exec( ua ) ||
+  		/(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+  		/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
+  		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+  		/(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+  		/(msie) ([\w.]+)/.exec( ua ) ||
+  		ua.indexOf("trident") >= 0 && /(rv)(?::| )([\w.]+)/.exec( ua ) ||
+  		ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+  		[];
+
+  	var platform_match = /(ipad)/.exec( ua ) ||
+  		/(iphone)/.exec( ua ) ||
+  		/(android)/.exec( ua ) ||
+  		/(windows phone)/.exec( ua ) ||
+  		/(win)/.exec( ua ) ||
+  		/(mac)/.exec( ua ) ||
+  		/(linux)/.exec( ua ) ||
+  		/(cros)/i.exec( ua ) ||
+  		[];
+
+  	return {
+  		browser: match[ 3 ] || match[ 1 ] || "",
+  		version: match[ 2 ] || "0",
+  		platform: platform_match[ 0 ] || ""
+  	};
+  };
+
+  matched = jQuery.uaMatch( window.navigator.userAgent );
+  browser = {};
+
+  if ( matched.browser ) {
+  	browser[ matched.browser ] = true;
+  	browser.version = matched.version;
+  	browser.versionNumber = parseInt(matched.version);
+  }
+
+  if ( matched.platform ) {
+  	browser[ matched.platform ] = true;
+  }
+
+  // These are all considered mobile platforms, meaning they run a mobile browser
+  if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+  	browser.mobile = true;
+  }
+
+  // These are all considered desktop platforms, meaning they run a desktop browser
+  if ( browser.cros || browser.mac || browser.linux || browser.win ) {
+  	browser.desktop = true;
+  }
+
+  // Chrome, Opera 15+ and Safari are webkit based browsers
+  if ( browser.chrome || browser.opr || browser.safari ) {
+  	browser.webkit = true;
+  }
+
+  // IE11 has a new token so we will assign it msie to avoid breaking changes
+  if ( browser.rv )
+  {
+  	var ie = "msie";
+
+  	matched.browser = ie;
+  	browser[ie] = true;
+  }
+
+  // Opera 15+ are identified as opr
+  if ( browser.opr )
+  {
+  	var opera = "opera";
+
+  	matched.browser = opera;
+  	browser[opera] = true;
+  }
+
+  // Stock Android browsers are marked as Safari on Android.
+  if ( browser.safari && browser.android )
+  {
+  	var android = "android";
+
+  	matched.browser = android;
+  	browser[android] = true;
+  }
+
+  // Assign the name and platform variable
+  browser.name = matched.browser;
+  browser.platform = matched.platform;
+
+
+  jQuery.browser = browser;
+})( jQuery, window );
