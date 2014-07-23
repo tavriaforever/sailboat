@@ -88,6 +88,25 @@ module.exports = function(grunt){
                 }]
             }
         },
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: 'dest/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: 'dest/css/',
+                ext: '.min.css'
+            }
+        },
+        uglify: {
+            prod: {
+                files: [{
+                    expand: true,
+                    cwd: 'dest/js',
+                    src: '**/*.js',
+                    dest: 'dest/js'
+                }]
+            }
+        },
         watch: {
             livereload: {
                 options: {
@@ -96,8 +115,8 @@ module.exports = function(grunt){
                 files: ['dest/**/*']
             },
             css: {
-                files: ['source/css/*.css'],
-                tasks: ['concat:css']
+                files: ['source/css/*.css', 'source/css/*.min.css'],
+                tasks: ['concat:css', 'cssmin']
             },
             js: {
                 files: ['source/js/app.js', 'source/js/**/*.js'],
@@ -138,6 +157,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-svgmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', [
 //        'connect',
@@ -147,6 +168,8 @@ module.exports = function(grunt){
         'imagemin',
         'svgmin',
         'concat',
-        'watch'
+        'watch',
+        'uglify',
+        'cssmin'
     ]);
 };

@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    /* (Start) Detect mobiles */
+    if($.browser.mobile) {
+        $('.page').addClass('page_mobile');
+    }
+    /* (End) Detect mobiles */
+
     $('.nav').onePageNav({
         currentClass: 'nav__item_active',
         changeHash: true,
