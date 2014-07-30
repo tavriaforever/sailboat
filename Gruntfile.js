@@ -49,6 +49,15 @@ module.exports = function(grunt){
                     dest: 'dest/js',
                     expand: true
                 }]
+            },
+            css: {
+                files: [{
+                    cwd: 'dest/css',
+                    src: ['app.css'],
+                    dest: 'dest/css',
+                    expand: true,
+                    ext: '.min.css'
+                }]
             }
         },
         concat: {
@@ -161,14 +170,23 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', [
-//        'connect',
         'jade',
         'stylus',
-        'copy',
+        'imagemin',
+        'svgmin',
+        'copy:css',
+        'copy:js',
+        'concat',
+        'watch'
+    ]);
+
+    grunt.registerTask('production', [
+        'jade',
+        'stylus',
+        'copy:js',
         'imagemin',
         'svgmin',
         'concat',
-        'watch',
         'uglify',
         'cssmin'
     ]);
