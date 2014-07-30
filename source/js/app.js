@@ -1,7 +1,7 @@
 $(document).ready(function() {
     /* (Start) Detect mobiles */
     if($.browser.mobile) {
-        $('.page').addClass('page_mobile');
+        $('html').addClass('page_mobile');
     }
     /* (End) Detect mobiles */
 
