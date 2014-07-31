@@ -124,8 +124,8 @@ module.exports = function(grunt){
                 files: ['dest/**/*']
             },
             css: {
-                files: ['source/css/*.css', 'source/css/*.min.css'],
-                tasks: ['concat:css', 'cssmin']
+                files: ['source/css/*.css'],
+                tasks: ['concat:css']
             },
             js: {
                 files: ['source/js/app.js', 'source/js/**/*.js'],
